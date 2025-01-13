@@ -1,0 +1,53 @@
+# Python bytecode files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+
+# pytest
+.cache/
+*.log
+*.html
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+
+# PyCharm
+.idea/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Windows OS files
+Thumbs.db
+Desktop.ini
+
+# macOS files
+.DS_Store
+
+# Selenium WebDriver binaries (например, chromedriver)
+chromedriver
+geckodriver
+
+# Отчеты тестов
+*.html
+
+# Файлы с паролями и секретами
+*.env
+
+# Логи
+*.log
+
+# Другие временные файлы
+*.bak
+*.tmp
