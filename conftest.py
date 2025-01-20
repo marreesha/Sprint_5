@@ -7,7 +7,7 @@ from helpers.generators import generate_login, generate_password
 from helpers.urls import URLs
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def driver():
     """Фикстура для запуска и завершения работы браузера"""
     options = webdriver.ChromeOptions()
@@ -23,7 +23,7 @@ def generated_user():
     password = generate_password()
     return email, password
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def register_user(driver, generated_user):
     """Фикстура для регистрации пользователя"""
     email, password = generated_user
@@ -37,7 +37,7 @@ def register_user(driver, generated_user):
     WebDriverWait(driver, 3).until(EC.url_to_be(URLs.LOGIN_PAGE))
     return email, password
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def login_user(driver, register_user):
     """Фикстура для логина пользователя после регистрации"""
     email, password = register_user
@@ -48,8 +48,7 @@ def login_user(driver, register_user):
     WebDriverWait(driver, 3).until(EC.url_to_be(URLs.BASE_URL))
     return email, password
 
-
-@pytest.fixture(scope="function")
+@pytest.fixture
 def personal_account(driver, login_user):
     """Фикстура для перехода в личный кабинет"""
     email, password = login_user

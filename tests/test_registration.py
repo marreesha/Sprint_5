@@ -24,15 +24,13 @@ def register_user(driver, password_length):
 
 class TestRegistration:
 
-    @pytest.mark.parametrize("password_length", [6, 10, 15])
+    @pytest.mark.parametrize("password_length", [6, 7, 10, 20])
     def test_registration_new_user_correct_data_success(self, driver, password_length):
         """Тест регистрации со сгенерированными логином и паролем"""
         # Регистрируем пользователя
         register_user(driver, password_length)
-
         # Ожидаем сигнала успешной регистрации
         WebDriverWait(driver, 3).until(EC.url_to_be(URLs.LOGIN_PAGE))
-
         # Проверка успешной регистрации
         assert driver.current_url == URLs.LOGIN_PAGE, "Регистрация не удалась"
 
@@ -41,7 +39,6 @@ class TestRegistration:
         """Тест ошибки регистрации с коротким паролем"""
         # Регистрируем пользователя с коротким паролем
         register_user(driver, password_length)
-
         # Ожидаем сигнала ошибки регистрации
         WebDriverWait(driver, 3).until(
             EC.visibility_of_element_located(RegistrationPageLocators.REGISTRATION_ERROR_MESSAGE)

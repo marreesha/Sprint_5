@@ -1,4 +1,3 @@
-import pytest
 from conftest import driver, generated_user, register_user
 from helpers.locators import LoginPageLocators, MainPageLocators, RegistrationPageLocators, ForgotPasswordPageLocators
 from helpers.urls import URLs
@@ -29,7 +28,6 @@ class TestLogin:
         driver.get(URLs.BASE_URL)
         # Клик на кнопку для входа
         driver.find_element(*MainPageLocators.LOGIN_BUTTON).click()
-
         assert perform_login(driver, email, password) == URLs.BASE_URL, "Не удалось войти в аккаунт"
 
     def test_login_with_personal_account_btn_success(self, driver, register_user):
@@ -37,7 +35,6 @@ class TestLogin:
         email, password = register_user
         # Клик на кнопку для входа
         driver.find_element(*MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
-
         assert perform_login(driver, email, password) == URLs.BASE_URL, "Не удалось войти в аккаунт"
 
     def test_login_with_btn_in_registration_form_success(self, driver, register_user):
@@ -47,7 +44,6 @@ class TestLogin:
         driver.get(URLs.REGISTER_PAGE)
         # Клик на кнопку для входа
         driver.find_element(*RegistrationPageLocators.REGISTRATION_LOGIN_BUTTON).click()
-
         assert perform_login(driver, email, password) == URLs.BASE_URL, "Не удалось войти в аккаунт"
 
     def test_login_in_password_recovery_form_success(self, driver, register_user):
@@ -57,5 +53,4 @@ class TestLogin:
         driver.get(URLs.FORGOT_PASSWORD_PAGE)
         # Клик на кнопку для входа
         driver.find_element(*ForgotPasswordPageLocators.FORGOT_PASSWORD_LOGIN_BUTTON).click()
-
         assert perform_login(driver, email, password) == URLs.BASE_URL, "Не удалось войти в аккаунт"
